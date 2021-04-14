@@ -1,7 +1,7 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Controllers\Controller;
 use App\Company;
 use App\Car;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +16,8 @@ class CompanyController extends Controller
    
     public function getCompany($id=0)
     {
+        if (!Auth::user()) return response()->json(['error' => 'Not Logged in'], 400); // if not logged in
+
         if ($id === 0 && Auth::user()->company_id) {
             $id = Auth::user()->company_id; //if this function is called with no specific company get get the company tied to user
             $company = Company::find($id);

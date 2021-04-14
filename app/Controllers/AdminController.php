@@ -1,7 +1,7 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Controllers\Controller;
 use App\User;
 use App\Company;
 use App\Role;
@@ -19,8 +19,7 @@ class AdminController extends Controller
             $companies = Company::all();
             if (!$companies) return response()->json(['error' => 'Not Found'], 404); 
             else return $companies;
-        
-        
+              
     }
 
     //test function to show user.

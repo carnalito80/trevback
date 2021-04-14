@@ -22,12 +22,14 @@ Route::get('/user', function (Request $request) {
 //User stuff
 // Route::middleware('auth:api')->post('/login', 'AuthController@login');
 Route::middleware('auth:api')->post('/logout', 'AuthController@logout');
-Route::middleware('auth:api')->post('/refresh-token', 'AuthController@refresh');
+// Route::middleware('auth:api')->post('/refresh-token', 'AuthController@refresh');
+//Route::post('/refresh-token', 'AuthController@refresh');
+Route::post('/refresh-token', 'AuthController@patchRefresh');
 Route::post('login', [ 'as' => 'login', 'uses' => 'AuthController@login']);
 Route::post('register', 'AuthController@register');
 Route::get('getnews/{number?}', 'NewsController@getNews' );
 
-// Admin stuff
+// Admin stuff note that they are all protected my the middleware.
 Route::group(['middleware' => 'isAdmin'], function () {
     Route::get('/admin/getcompanies', 'AdminController@getCompanies');
     Route::get('/admin/getusers/{id?}', 'AdminController@getUsers');
@@ -41,6 +43,7 @@ Route::get('/company/getcompany/{id?}', 'CompanyController@getCompany'); //compa
 Route::post('/company/uploadlogo','CompanyController@uploadLogo');
 Route::post('/company/updatecompanydetails/{id?}','CompanyController@updateCompanyDetails');
 
+Route::post('postecu', 'RomFileController@postECU');
 
 //***************Webshop stuff ******************
 Route::get('/shop/getcars/{car_id?}', 'ShopController@getCars'); 
@@ -55,6 +58,12 @@ Route::get('/shop/categories', 'ShopController@getCategories');
 Route::get('/shop/category/{cat_id?}', 'ShopController@getCategory');
 Route::get('/shop/subcat/{sub_id?}', 'ShopController@getSubCategory');
 Route::get('/shop/getproductsbysub/{subId?}/{carId?}', 'ShopController@getProductsBySub');
+
+//***************Kalender stuff ******************
+Route::post('/kalender/createevent', 'KalenderController@createEvent'); 
+Route::get('/kalender/getevents', 'KalenderController@getEvents'); 
+Route::post('/kalender/editevent/{id?}', 'KalenderController@editEvent'); 
+Route::delete('/kalender/removeevent/{id?}', 'KalenderController@removeEvent'); 
 
 //*************** */Test stuff*******************
 

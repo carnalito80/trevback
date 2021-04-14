@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use App\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -139,6 +139,26 @@ class AuthController extends Controller
         return $this->respondWithToken(Auth::refresh());
     }
 
+
+    public function patchRefresh()
+{
+    $current_token  = Auth::getToken();
+    $token          = Auth::refresh($current_token);
+
+
+    return response()->json([
+        'accessToken' => $token,
+        'token_type' => 'bearer',
+        'expires_in' => auth()->factory()->getTTL() * 60
+    ]);
+    // return response()->json([
+    //     "status" => "success",
+    //     "code" => 200,
+    //     'data' =>
+    //         compact('token'),
+    //     'messages' => ['Token refreshed!'],
+    // ]);
+}
 
     /**
      * Returns the data we want on the user.

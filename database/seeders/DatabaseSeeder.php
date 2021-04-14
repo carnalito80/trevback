@@ -86,15 +86,23 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
-        DB::table('news')->insert([
-            ['created_at' => $thedate, 'title' => 'Good News everyone!', 'text' => '<b>We did it, the page is up</b>', 'post_date' => '2021-03-01', 'user_id' => 2], 
-            ['created_at' => $thedate, 'title' => 'Good News everyone!', 'text' => 'Tomorrow youll be making a delivery to Ebola 9, the virus planet.', 'post_date' => '2021-03-01', 'user_id' => 2], 
-            ['created_at' => $thedate, 'title' => 'Good News everyone!', 'text' => 'Today youll be delivering a crate of subpoenas to Sicily 8, the Mob Planet!', 'post_date' => '2021-03-02', 'user_id' => 4], 
-            ['created_at' => $thedate, 'title' => 'Good News everyone!', 'text' => 'Good news. Theres a report on TV with some very bad news.', 'post_date' => '2021-03-04', 'user_id' => 5], 
-            ['created_at' => $thedate, 'title' => 'Good News everyone!', 'text' => 'Good news everyone! Im sending you on an extremely controversial mission!', 'post_date' => '2021-03-05', 'user_id' => 3], 
+        // DB::table('news')->insert([
+        //     ['created_at' => $thedate, 'title' => 'Good News everyone!', 'text' => '<b>We did it, the page is up</b>', 'post_date' => '2021-03-01', 'user_id' => 2], 
+        //     ['created_at' => $thedate, 'title' => 'Good News everyone!', 'text' => 'Tomorrow youll be making a delivery to Ebola 9, the virus planet.', 'post_date' => '2021-03-01', 'user_id' => 2], 
+        //     ['created_at' => $thedate, 'title' => 'Good News everyone!', 'text' => 'Today youll be delivering a crate of subpoenas to Sicily 8, the Mob Planet!', 'post_date' => '2021-03-02', 'user_id' => 4], 
+        //     ['created_at' => $thedate, 'title' => 'Good News everyone!', 'text' => 'Good news. Theres a report on TV with some very bad news.', 'post_date' => '2021-03-04', 'user_id' => 5], 
+        //     ['created_at' => $thedate, 'title' => 'Good News everyone!', 'text' => 'Good news everyone! Im sending you on an extremely controversial mission!', 'post_date' => '2021-03-05', 'user_id' => 3], 
            
+        // ]);
+
+        DB::table('kalender_events')->insert([
+
+            ['created_at' => $thedate, 'ownerId' => 1, 'companyId' => 1, 'title' => 'Bosses Måleri - Jobb i Kista', 'info' => 'Vi vehöver några gubbar, är det någon som har folk över?', 'startDate' => '2021-05-01', 'endDate' => '2021-05-05', 'behov' => 'behov_av_folk'], 
+            ['created_at' => $thedate, 'ownerId' => 1, 'companyId' => 1, 'title' => 'Bosses Måleri - Jobb i Solna', 'info' => 'Vi vehöver några gubbar, är det någon som har folk över?', 'startDate' => '2021-05-03', 'endDate' => '2021-05-06', 'behov' => 'behov_av_folk'], 
+        
         ]);
 
-        
+
+    
     }
 }

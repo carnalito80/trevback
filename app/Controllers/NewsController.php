@@ -1,7 +1,7 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\News;
